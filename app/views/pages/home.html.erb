@@ -1,2 +1,12 @@
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<!-- Include this in the body of your HTML file -->
+<div class="container">
+  <h1>Welcome to GOATMO!</h1>
+  <p>
+    GOATMO is the premier platform for finding and renting goats for all your needs.
+    Whether you're looking for a furry companion or need a goat to mow your lawn, we've got you covered.
+    Explore our listings and start your goat adventure today!
+  </p>
+  <p>
+    <%= link_to 'Browse Goat Listings', goats_path, class: 'btn btn-primary' %>
+  </p>
+</div>
