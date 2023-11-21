@@ -28,11 +28,69 @@
   padding-bottom: 25px;
 }
 
-
 .container {
   margin-top: 50px;
   width: 100%;
   height: auto;
+
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+}
+
+.GOAT {
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  width: 80%;
+  padding-bottom: 25px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.GOAT h1 {
+  padding-bottom: 25px;
+  margin-left: 120px;
+}
+
+.GOAT p {
+  opacity: .7;
+  margin-left: 120px;
+}
+
+.GOAT2 {
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  width: 80%;
+  padding-bottom: 25px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.GOAT2 h1 {
+  padding-bottom: 25px;
+  margin-left: 15px;
+}
+
+.GOAT2 p {
+  opacity: .7;
+  margin-left: 15px;
+  margin-right: 120px;
+}
+
+.goat-image {
+  width: 400px;
+  height: 400px;
+  margin-right: 15px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+body {
+  background-color: #001d3d ;
 }
 
 .arrow {
@@ -46,11 +104,16 @@
   bottom: 16px;
 }
 
-
-
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+.buttongoats {
+  position: relative;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 5%;
 }
 
 // Smallest device
