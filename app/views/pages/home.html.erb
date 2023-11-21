@@ -1,12 +1,46 @@
 <!-- Include this in the body of your HTML file -->
-<div class="container">
-  <h1>Welcome to GOATMO!</h1>
-  <p>
-    GOATMO is the premier platform for finding and renting goats for all your needs.
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://wallpapercave.com/wp/wp4713581.jpg);">
+  <div class="container">
+    <h1>Welcome to <strong>GOATMO!</strong></h1>
+    <p>GOATMO is the premier platform for finding and renting goats for all your needs.
     Whether you're looking for a furry companion or need a goat to mow your lawn, we've got you covered.
-    Explore our listings and start your goat adventure today!
-  </p>
-  <p>
-    <%= link_to 'Browse Goat Listings', goats_path, class: 'btn btn-primary' %>
-  </p>
+    Explore our listings and start your goat adventure today!</p>
+    <%= link_to 'Browse Goat Listings', goats_path, class: 'btn btn-primary btn-lg' %>
+  </div>
+    <i class="arrow down"></i>
+</div>
+
+<%# Goat 1 %>
+
+<div class="container d-flex">
+  <img src="https://ogden_images.s3.amazonaws.com/www.grit.com/images/2022/08/03151307/sheeps-eat-grass-750x500.jpg" alt="Goat Image" class="goat-image">
+  <div class="GOAT">
+    <h1><strong>G.O.A.T.</strong> - Greatest of All Tenants!</h1>
+    <p>Tired of boring lawn mowers and noisy leaf blowers? Say goodbye to grass-cutting monotony and hello to our fleet of professional goats! They'll munch your lawn to perfection, leaving behind a trail of happiness and eco-friendly fertilizer. Goat-a-Lot: where your grass gets greener, and your neighbors get curious!</p>
+  </div>
+</div>
+
+<%# Goat 2 %>
+
+<div class="container d-flex">
+  <div class="GOAT2">
+    <h1><strong>Goats</strong> - On the Go!</h1>
+    <p>Need a goat for that impromptu picnic or office meeting? Goat-a-Lot delivers goats straight to your doorstep. Our on-demand goats are always ready for a G.O.A.T. time. Watch out for the jealous stares from co-workers – they'll be green with goat envy!</p>
+  </div>
+  <img src="https://live-production.wcms.abc-cdn.net.au/32d5e44ac994dc301089ea51d4e76bad?impolicy=wcms_crop_resize&cropH=1068&cropW=1899&xPos=44&yPos=84&width=862&height=485" alt="Goat Image" class="goat-image">
+</div>
+
+<%# Goat 3 %>
+
+<div class="container d-flex">
+  <img src="https://mybackyardlife.com/wp-content/uploads/2022/04/Goat-Eating-Grass.jpg" alt="Goat Image" class="goat-image">
+  <div class="GOAT">
+    <h1><strong>Goat</strong>-A-Licious Discounts!</h1>
+    <p>Refer a friend, and both of you get a discount on your next goat rental! Because nothing says friendship like sharing the joy of goat-tastic adventures. It's the herd mentality, but in a good way!
+Download Goat-a-Lot now and join the bleat-iful revolution of lawn care and laughter. Your grass will thank you, and so will your inner goat enthusiast!</p>
+  </div>
+</div>
+
+<div class="buttongoats">
+  <%= link_to 'Browse Goat Listings', goats_path, class: 'btn btn-light btn-lg' %>
 </div>

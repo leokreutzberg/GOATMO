@@ -1,46 +1,159 @@
 // Specific CSS for your home-page
-// styles.scss
-
-// Define variables for reuse
-$primary-color: #3498db;
-$btn-color: #2ecc71;
-
-// Apply styles to the HTML elements
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #ecf0f1;
-  color: #333;
+.banner {
+  background-size: cover;
+  background-position: top;
+  padding: 150px 0;
+  height: calc(100vh - 66px);
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-h1 {
-  font-size: 2.5em;
-  color: $primary-color;
-  text-align: center;
-  margin-top: 50px;
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 10px 10px 30cap rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+  padding-bottom: 25px;
 }
 
-p {
-  font-size: 1.2em;
-  line-height: 1.5;
-  text-align: center;
-  margin-bottom: 20px;
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: left;
+  width: 60%;
+  padding-bottom: 25px;
 }
-
-.btn-primary {
-  background-color: $btn-color;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: darken($btn-color, 10%);
-  }
-
 
 .container {
-  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  height: auto;
+
 }
+
+.right {
+  display: flex;
+  justify-content: right;
+}
+
+.GOAT {
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  width: 80%;
+  padding-bottom: 25px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.GOAT h1 {
+  padding-bottom: 25px;
+  margin-left: 120px;
+}
+
+.GOAT p {
+  opacity: .7;
+  margin-left: 120px;
+}
+
+.GOAT2 {
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  width: 80%;
+  padding-bottom: 25px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.GOAT2 h1 {
+  padding-bottom: 25px;
+  margin-left: 15px;
+}
+
+.GOAT2 p {
+  opacity: .7;
+  margin-left: 15px;
+  margin-right: 120px;
+}
+
+.goat-image {
+  width: 400px;
+  height: 400px;
+  margin-right: 15px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+body {
+  background-color: #001d3d ;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  margin: auto;
+  padding: 8px;
+  position: absolute;
+  right: 50%;
+  bottom: 16px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.buttongoats {
+  position: relative;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.banner {
+  backdrop-filter: none;
+  backdrop-filter: url(commonfilters.svg#filter);
+  backdrop-filter: blur(10px);
+  backdrop-filter: inherit;
 }
