@@ -1,0 +1,16 @@
+<h1>Create a New Goat Listing</h1>
+<div class="listing-form">
+  <%= form_for @goat, html: { multipart: true } do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :photo %>
+    <%= form.file_field :photo, accept: 'image/*' %>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+    <%= form.submit "Create Listing", class: "btn btn-primary" %>
+  <% end %>
+</div>
