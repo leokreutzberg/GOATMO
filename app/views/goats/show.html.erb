@@ -61,7 +61,7 @@
       <p class="goat-price">Price per Day: $<%= @goat.price %></p>
     </div>
     <div class="detail">
-      <%= link_to 'Book Now', booking_path(goat_id: @goat.id), class: 'book-now-button' %>
+      <%= link_to 'Book Now', new_goat_booking_path(@goat), class: 'book-now-button' %>
     </div>
   </div>
 </div>
