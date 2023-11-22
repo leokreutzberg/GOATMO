@@ -15,8 +15,12 @@
 
   <body>
    <%= render "layouts/navbar" %>
-   <p class="notice mb-0"><%= notice %></p>
-   <p class="alert mb-0"><%= alert %></p>
+   <% unless alert.nil? %>
+    <p class="alert mb-0"><%= alert %></p>
+   <% end %>
+   <% unless notice.nil? %>
+    <p class="notice mb-0"><%= notice %></p>
+   <% end %>
    <%= yield %>
   </body>
 </html>

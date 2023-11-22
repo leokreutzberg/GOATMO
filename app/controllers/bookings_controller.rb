@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :update, :destroy]
+  before_action :set_booking, only: [:destroy]
 
   def new
     @goat = Goat.find(params[:goat_id])
@@ -17,12 +17,6 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy

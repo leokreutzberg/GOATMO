@@ -19,9 +19,15 @@
           <%# <i class="fa-solid fa-user " id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> %>
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://static.thenounproject.com/png/3201587-200.png" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My Bookings</a>
+              <a class="dropdown-item" href="/dashboard">My Bookings</a>
               <a class="dropdown-item" href="#">Add Listing</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
+
+              <% if user_signed_in? %>
+                <%= link_to "Log out",  destroy_user_session_path, data: { turbo_method: :delete }, class:"dropdown-item" %>
+              <% else %>
+                <a class="dropdown-item" href="/users/sign_in">Log in</a>
+              <% end %>
+
             </div>
           </li>
           <!--li class="nav-item"-->
