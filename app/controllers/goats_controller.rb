@@ -1,7 +1,7 @@
 class GoatsController < ApplicationController
 
   def index
-    @goats = Goat.all
+    @goats = Goat.all.order(created_at: :desc)
   end
 
   def show
@@ -18,8 +18,10 @@ class GoatsController < ApplicationController
   end
 
   def create
-    @goat = Goat.new(goats_params)
+    @goat = Goat.new(goat_params)
+    @goat.user = current_user
     @goat.save
+    redirect_to goat_path(@goat), notice: "Goat added successfully"
   end
 
   def edit
@@ -28,12 +30,12 @@ class GoatsController < ApplicationController
 
   def update
     @goat = Goat.find(params[:id])
-    @goat.update(goats_params)
+    @goat.update(goat_params)
   end
 
   private
 
   def goat_params
-    params.require(:goats).permit(:name, :photo)
+    params.require(:goat).permit(:name, :photo, :price, :description, :location)
   end
 end
