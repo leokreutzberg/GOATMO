@@ -1,16 +1,28 @@
+<div class="new-goat">
+
 <h1>Create a New Goat Listing</h1>
-<div class="listing-form">
-  <%= form_for @goat, html: { multipart: true } do |form| %>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-    <%= form.label :photo %>
-    <%= form.file_field :photo, accept: 'image/*' %>
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-    <%= form.submit "Create Listing", class: "btn btn-primary" %>
-  <% end %>
+
+
+    <%= simple_form_for (@goat) do |f| %>
+      <div class="form-inputs">
+              <%= f.input :name,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :location,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :price,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :description,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :photo, as: :file %>
+
+                  <div class="form-actions">
+      <%= f.button :submit, "Create Listing" %>
+    </div>
+      </div>
+    <% end %>
+  </div>
 </div>
