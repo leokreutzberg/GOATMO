@@ -1,13 +1,17 @@
-<div class="goat-show">
-  <h1>Hello <%= current_user.first_name %></h1>
-  <h1>Your Bookings:</h1>
+<div class="container goat-show">
+  <h1><strong>Hello <%= current_user.first_name %></strong> </h1>
+  <h3>Your Bookings:</h3>
+
   <% if @bookings.present? %>
     <% @bookings.each do |booking| %>
-      <div>
-        <h2>Booking ID: <%= booking.id %></h2>
-        <p>Goat: <%= booking.goat.name %></p>
-        <p>Start Date: <%= booking.start_date %></p>
-        <p>End Date: <%= booking.end_date %></p>
+      <div class="booking-card">
+        <%= cl_image_tag booking.goat.photo.key %>
+        <div class="booking-card-info">
+          <p>Booking ID: <%= booking.id %></p>
+          <h3>Goat: <%= booking.goat.name %></h3>
+          <p>Start Date: <%= booking.start_date %></p>
+          <p>End Date: <%= booking.end_date %></p>
+        </div>
       </div>
     <% end %>
   <% else %>
