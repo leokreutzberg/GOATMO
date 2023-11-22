@@ -2,12 +2,20 @@
 
 <style>
   body {
-    background-color: #001d3d;
+    background-color: white;
   }
 
   h1 {
     text-align: center;
-    color: white;
+    color: #001d3d;
+    padding-top: 25px;
+    font-size: 75px;
+  }
+
+  p {
+    text-align: center;
+    color: #001d3d;
+    margin: 0 auto;
   }
 
   .goat-listing {
@@ -25,16 +33,23 @@
   }
 
   .goat-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    /* background-color: white;
+    border: 5px solid #ddd;
+    border-color:#001d3d;
+    border-radius: 15px;
     padding: 15px;
-    text-align: center;
+    text-align: center; */
+    margin-bottom: 16px;
+  }
+
+  .goat-container p {
+    text-align: left;
   }
 
   .goat-image {
     max-width: 100%;
-    border-radius: 5px;
+    border-radius: 15px;
+    height: 250px;
   }
 
   .goat-name {
@@ -44,25 +59,27 @@
   }
 
   .goat-location {
-    margin-top: 10px;
     font-style: italic;
     color: #555;
   }
 
   .goat-price {
-    margin-top: 10px;
     font-weight: bold;
     color: #27ae60;
   }
 </style>
 
-<h1>Goats available</h1>
+<h1>GOATS Available</h1>
 
+<div class="w-50 mx-auto pt-4">
+<p>Discover our fleet of professional goats ready to transform your lawn into a pristine paradise. From expert grass munching to eco-friendly fertilizing, our goats are here to make your outdoor space truly extraordinary.</p></p>
+</div>
+<div class="container">
 <div class="goat-listing">
-  <% @goats.each_slice(3) do |goat_batch| %>
+  <% @goats.each_slice(4) do |goat_batch| %>
     <div class="row">
       <% goat_batch.each do |goat| %>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= link_to goat_path(goat), style: 'text-decoration: none;' do %>
             <div class="goat-container">
               <%= cl_image_tag(goat.photo.key, width: 400, height: 300, crop: :fill, class: 'goat-image') %>
@@ -70,7 +87,7 @@
               <div class="goat-rating">
               <!-- Display stars based on the review rating -->
               </div>
-              <p class="goat-location"><%= goat.location %></p>
+              <p class="goat-location"><strong>Location:</strong> <%= goat.location %></p>
               <p class="goat-price">Price per Day: $<%= goat.price %></p>
             </div>
           <% end %>
@@ -78,4 +95,5 @@
       <% end %>
     </div>
   <% end %>
+</div>
 </div>
