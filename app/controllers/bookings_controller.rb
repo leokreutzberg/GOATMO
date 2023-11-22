@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:destroy]
 
   def new
     @booking = Booking.new
@@ -13,6 +13,9 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def dashboard
   end
 
   def destroy
