@@ -40,6 +40,11 @@
     padding: 15px;
     text-align: center; */
     margin-bottom: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .goat-container:hover {
+    transform: scale(1.05);
   }
 
   .goat-container p {
@@ -50,6 +55,11 @@
     max-width: 100%;
     border-radius: 15px;
     height: 250px;
+    transition: transform 0.2s ease;
+  }
+
+  .goat-container:hover .goat-image {
+    transform: scale(1.0);
   }
 
   .goat-name {
@@ -67,6 +77,17 @@
     font-weight: bold;
     color: #27ae60;
   }
+
+  .btn {
+    background-color: #17283b;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .btn:hover {
+   background-color: #ffc300;
+   transition: 0.5s;
+  }
 </style>
 
 <h1>GOATS Available</h1>
@@ -83,7 +104,7 @@
               class: "form-control",
               placeholder: "Type a keyword"
             %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-default" %>
       <% end %>
     </div>
   </div>
@@ -97,7 +118,6 @@
               <%= cl_image_tag(goat.photo.key, width: 400, height: 300, crop: :fill, class: 'goat-image') %>
               <h2 class="goat-name"><%= goat.name %></h2>
               <div class="goat-rating">
-              <!-- Display stars based on the review rating -->
               </div>
               <p class="goat-location"><strong>Location:</strong> <%= goat.location %></p>
               <p class="goat-price">Price per Day: $<%= goat.price %></p>
