@@ -6,6 +6,7 @@ class GoatsController < ApplicationController
 
   def show
     @goat = Goat.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
