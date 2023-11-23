@@ -1,0 +1,46 @@
+<style>
+  body {
+    background-color: #F5F5F5;
+  }
+  .booking-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 800px;
+    margin: auto;
+    margin-top: 80px;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #27AE60;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="booking-form">
+  <h2>Create a Booking</h2>
+  <%= simple_form_for [@goat, @booking] do |f| %>
+    <%= f.input :start_date, as: :date,
+    html5: true %>
+    <%= f.input :end_date, as: :date,
+    html5: true %>
+    <%= f.submit "Confirm booking", class: "btn btn-primary" %>
+  <% end %>
+</div>

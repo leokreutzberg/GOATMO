@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
 
   get '/dashboard', to: 'users#dashboard'
-
   resources :goats do
     resources :bookings, only: [:new, :create]
   end
@@ -18,5 +17,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
 end

@@ -1,0 +1,26 @@
+.goat-show {
+  color: #001d3d;
+  // text-align: center;
+  margin-top: 50px;
+}
+
+.booking-card {
+  display: flex;
+  margin-top: 80px;
+  border: #001d3d 1px solid;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.booking-card img {
+  border-radius: 20px;
+  object-fit: cover;
+  height: 300px;
+  width: 300px;
+  margin-right: 80px;
+}
+
+h1 {
+  margin-bottom: 50px;
+  font-size: 60px;
+}

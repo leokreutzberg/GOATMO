@@ -1,0 +1,28 @@
+<div class="new-goat">
+
+<h1>Create a New Goat Listing</h1>
+
+
+    <%= simple_form_for (@goat) do |f| %>
+      <div class="form-inputs">
+              <%= f.input :name,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :location,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :price,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :description,
+                  required: true,
+                  autofocus: true %>
+              <%= f.input :photo, as: :file %>
+
+                  <div class="form-actions">
+      <%= f.button :submit, "Create Listing" %>
+    </div>
+      </div>
+    <% end %>
+  </div>
+</div>

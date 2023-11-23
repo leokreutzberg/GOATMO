@@ -12,12 +12,17 @@
     <!-- Include this in the head of your HTML file -->
     <%# <link rel="stylesheet" type="text/css" href="styles.css"> %>
 
+    <%= favicon_link_tag asset_path('https://formafeed.com/wp-content/uploads/2017/09/icon-goat.png') %>
   </head>
 
   <body>
    <%= render "layouts/navbar" %>
-   <p class="notice mb-0"><%= notice %></p>
-   <p class="alert mb-0"><%= alert %></p>
+   <% unless alert.nil? %>
+    <p class="alert mb-0"><%= alert %></p>
+   <% end %>
+   <% unless notice.nil? %>
+    <p class="notice mb-0"><%= notice %></p>
+   <% end %>
    <%= yield %>
   </body>
 </html>
