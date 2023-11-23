@@ -16,7 +16,7 @@ Booking.destroy_all
 Goat.destroy_all
 User.destroy_all
 
-LOCATIONS = ['London', 'Edinburgh', 'Düsseldorf', 'Rabat', 'Birmingham', 'Paris']
+LOCATIONS = ['London', 'Edinburgh', 'Düsseldorf', 'Rabat', 'Birmingham', 'Paris', 'Belgrade', '25 Hatfield Road, St Albans']
 
 GOAT_IMAGES = ['https://images.newscientist.com/wp-content/uploads/2019/07/09172512/205582.jpg?crop=16:9,smart&width=1200&height=675&upscale=true',
                'https://www.whitehousefarmcentre.co.uk/media/1326/goats.jpg?anchor=center&mode=crop&width=500&height=350&rnd=132061236150000000',
@@ -32,10 +32,10 @@ image_index = 0
 
 3.times do
   user = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456789')
-  user.save
+  user.save!
   puts 'User created'
 
-  3.times do
+   3.times do
     goat = Goat.new(name: Faker::FunnyName.two_word_name, location: LOCATIONS.sample, price: rand(20..500), description: Faker::Quotes::Shakespeare.as_you_like_it_quote)
     goat.user = user
 
@@ -43,7 +43,7 @@ image_index = 0
     goat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
     image_index += 1
 
-    goat.save
+    goat.save!
     puts 'Goat created'
   end
 end

@@ -119,6 +119,14 @@
 <p>Discover our fleet of professional goats ready to transform your lawn into a pristine paradise. From expert grass munching to eco-friendly fertilizing, our goats are here to make your outdoor space truly extraordinary.</p></p>
 </div>
 <div class="container">
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
   <div class="row justify-content-center">
     <div class="col-sm-8 my-3">
       <%= form_with url: goats_path, method: :get, class: "d-flex" do |f| %>
@@ -131,6 +139,7 @@
       <% end %>
     </div>
   </div>
+
 <div class="goat-listing">
   <% @goats.each_slice(4) do |goat_batch| %>
     <div class="row justify-content-center">

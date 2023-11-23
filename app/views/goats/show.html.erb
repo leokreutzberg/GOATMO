@@ -49,6 +49,12 @@
   }
 </style>
 
+<div style="width: 75%; height: 600px; margin: auto;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 <div class="goat-container">
   <%= cl_image_tag(@goat.photo.key, width: 200, height: 150, crop: :fill, class: 'goat-image') %>
   <div class="goat-details">
