@@ -7,13 +7,13 @@ class GoatsController < ApplicationController
         lat: goat.latitude,
         lng: goat.longitude
       }
+    end
 
     if params[:query].present?
       @goat_search = Goat.search(params[:query])
       @goats = @goat_search.order(created_at: :desc)
     else
       @goats = Goat.all.order(created_at: :desc)
-
     end
   end
 
