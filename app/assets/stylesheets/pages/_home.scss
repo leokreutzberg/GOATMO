@@ -35,9 +35,28 @@
 
 }
 
+.btn {
+  background-color:#001d3d;
+  color: white;
+  border-radius: 20px;
+  padding: 14px 28px;
+}
+
+.btn:hover {
+  background-color: #ffc300;
+  transition: 0.5s;
+}
+
 .right {
   display: flex;
   justify-content: right;
+}
+
+.box {
+  background-color: #17283b;
+  border-radius: 30px;
+  display: flex;
+  padding: 50px;
 }
 
 .GOAT {
@@ -46,18 +65,18 @@
   text-align: left;
   width: 80%;
   padding-bottom: 25px;
-  padding-top: 5em;
-  padding-bottom: 5em;
+  // padding-top: 5em;
+  // padding-bottom: 5em;
 }
 
 .GOAT h1 {
   padding-bottom: 25px;
-  margin-left: 120px;
+  margin-left: 50px;
 }
 
 .GOAT p {
   opacity: .7;
-  margin-left: 120px;
+  margin-left: 50px;
 }
 
 .GOAT2 {
@@ -65,13 +84,13 @@
   color: white;
   text-align: left;
   width: 80%;
-  padding-bottom: 25px;
-  padding-top: 5em;
-  padding-bottom: 5em;
+  // padding-bottom: 25px;
+  // padding-top: 5em;
+  // padding-bottom: 5em;
 }
 
 .GOAT2 h1 {
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
   margin-left: 15px;
 }
 
@@ -94,7 +113,6 @@ body {
 }
 
 .goathome {
-
   background-color: #001d3d;
 }
 
@@ -119,6 +137,7 @@ body {
   align-items: center;
   text-align: center;
   padding-bottom: 5%;
+  margin-top:  5%;
 }
 
 // Smallest device

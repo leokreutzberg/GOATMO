@@ -1,28 +1,18 @@
-<!-- app/views/goats/show.html.erb -->
 <style>
   body {
-    background-color: #ffff;
+    background-color: #F5F5F5;
   }
   .goat-container {
-    background-color: white;
-    /* border: 1px solid #ddd; */
-    padding: 15px;
     display: flex;
-    align-items: center;
-    padding-right: 280px ;
-    padding-left: 280px ;
-    padding-top: 50px;
-
+    justify-content: space-between;
+    margin-top: 20px;
+    min-height: 400px;
   }
-
-  /* .goat-container h2 p {
-    color: #001d3d
-  } */
-
   .goat-image {
     max-width: 40%;
     border-radius: 5px;
-    margin-right: 20px;
+    margin-left: 40px;
+    margin-top: 13px;
   }
   .goat-details {
     flex-grow: 1;
@@ -33,33 +23,30 @@
     margin-bottom: 10px;
   }
   .goat-name {
-    font-size: 1.5em;
-    color: #001d3d;
+    font-size: 4em;
+    color: #333;
+    margin-left: 20px;
+    margin-top: 30px;
   }
   .goat-description {
     font-style: italic;
-    color: #001d3d;
+    color: #555;
+    margin-left: 20px;
   }
   .goat-price {
     font-weight: bold;
-    color: #27AE60;
+    color: #333;
+    font-size: 2em;
   }
-  .book-now-button {
-    background-color:  #001d3d;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
+  .booking-form {
+    width: 30%;
+    margin-right: 40px;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 40px;
     border-radius: 5px;
-    font-size: 1.2em;
-    display: inline-block;
+    padding-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   }
-
-  .book-now-button:hover {
-    background-color: #ffc300;
-    transition: 0.5s;
-
-  }
-
 </style>
 
 <div style="width: 75%; height: 600px; margin: auto;"
@@ -77,11 +64,19 @@
     <div class="detail">
       <p class="goat-description"><%= @goat.description %></p>
     </div>
-    <div class="detail">
-      <p class="goat-price">Price per Day: $<%= @goat.price %></p>
-    </div>
-    <div class="detail">
-      <%= link_to 'Book Now', new_goat_booking_path(@goat), class: 'book-now-button' %>
-    </div>
+  </div>
+
+  <div class="booking-form">
+    <%= simple_form_for [@goat, @booking] do |f| %>
+      <p class="goat-price"><%= @goat.price %>€/Day</p>
+      <div data-controller="booking-total-price" data-daily-price=<%= @goat.price %>>
+        <%= f.input :start_date, as: :date, html5: true, input_html: { data: { booking_total_price_target: "startDate", action: "change->booking-total-price#calculate" } } %>
+        <%= f.input :end_date, as: :date, html5: true, input_html: { data: { booking_total_price_target: "endDate", action: "change->booking-total-price#calculate" } } %>
+        <div class="d-flex justify-content-between align-items-center" style="height: 86px;">
+          <div data-booking-total-price-target="endPrice"></div>
+          <%= f.submit "Book Now", class: "btn btn-default", data: {booking_total_price_target: "btn" } %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
