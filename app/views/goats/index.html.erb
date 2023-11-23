@@ -88,6 +88,11 @@
    background-color: #ffc300;
    transition: 0.5s;
   }
+
+  .form-control {
+    border-radius: 20px;
+    margin-right: 10px;
+  }
 </style>
 
 <h1>GOATS Available</h1>
@@ -104,13 +109,13 @@
               class: "form-control",
               placeholder: "Type a keyword"
             %>
-        <%= submit_tag "Search", name: "", class: "btn btn-default" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-default"%>
       <% end %>
     </div>
   </div>
 <div class="goat-listing">
   <% @goats.each_slice(4) do |goat_batch| %>
-    <div class="row">
+    <div class="row justify-content-center">
       <% goat_batch.each do |goat| %>
         <div class="col-md-3">
           <%= link_to goat_path(goat), style: 'text-decoration: none;' do %>
