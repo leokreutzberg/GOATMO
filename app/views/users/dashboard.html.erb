@@ -11,6 +11,10 @@
           <h3>Goat: <%= booking.goat.name %></h3>
           <p>Start Date: <%= booking.start_date %></p>
           <p>End Date: <%= booking.end_date %></p>
+
+          <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-booking' do %>
+            <%= image_tag 'remove.png', alt: 'Delete' %>
+          <% end %>
         </div>
       </div>
     <% end %>
