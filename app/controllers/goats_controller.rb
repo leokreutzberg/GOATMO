@@ -1,7 +1,11 @@
 class GoatsController < ApplicationController
-
   def index
-    @goats = Goat.all.order(created_at: :desc)
+    if params[:query].present?
+      @goat_search = Goat.search(params[:query])
+      @goats = @goat_search.order(created_at: :desc)
+    else
+      @goats = Goat.all.order(created_at: :desc)
+    end
   end
 
   def show
