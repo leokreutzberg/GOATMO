@@ -1,10 +1,13 @@
 
 .new-goat {
-  width: 80%;
+  width: 50%;
   margin: auto;
-  background-color: rgb(179, 179, 179);
+  background-color: #9da7b1;
   background-blend-mode: screen;
   padding: 20px;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  border: 2px solid #001d3d;
 }
