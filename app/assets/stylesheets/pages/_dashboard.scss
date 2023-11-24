@@ -1,6 +1,5 @@
 .goat-show {
   color: #001d3d;
-  // text-align: center;
   margin-top: 50px;
 }
 
@@ -10,6 +9,7 @@
   border: #001d3d 1px solid;
   border-radius: 20px;
   padding: 15px;
+  position: relative;
 }
 
 .booking-card img {
@@ -17,10 +17,21 @@
   object-fit: cover;
   height: 300px;
   width: 300px;
-  margin-right: 80px;
+  margin-right: 20px;
 }
 
 h1 {
   margin-bottom: 50px;
   font-size: 60px;
+}
+
+.delete-booking {
+  position: absolute;
+  top: 5px;
+  right: -8px;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
 }

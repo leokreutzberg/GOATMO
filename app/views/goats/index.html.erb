@@ -16,6 +16,7 @@
     text-align: center;
     color: #001d3d;
     margin: 0 auto;
+    margin-bottom: 5px;
   }
 
   .goat-listing {
@@ -104,8 +105,21 @@
     border: 0;
     height: 2px;
     background-image: linear-gradient(to right, rgba(0, 29, 61, 0), rgba(0, 29, 61, 0.75), rgba(0, 29, 61, 0));
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
+
+.main-container {
+  display: flex;
+  margin-left: 150px;
+}
+
+  #map {
+    position: sticky !important;
+    top: 0;
+    height: 50vh;
+    margin-bottom: 200px;
+    margin-right: ;
+}
 
 </style>
 
@@ -119,13 +133,7 @@
 <p>Discover our fleet of professional goats ready to transform your lawn into a pristine paradise. From expert grass munching to eco-friendly fertilizing, our goats are here to make your outdoor space truly extraordinary.</p></p>
 </div>
 
-<div class="container">
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-
+<%# search bar %>
   <div class="row justify-content-center">
     <div class="col-sm-8 my-3">
       <%= form_with url: goats_path, method: :get, class: "d-flex" do |f| %>
@@ -139,24 +147,34 @@
     </div>
   </div>
 
-<div class="goat-listing">
-  <% @goats.each_slice(4) do |goat_batch| %>
-    <div class="row justify-content-center">
-      <% goat_batch.each do |goat| %>
-        <div class="col-md-3">
-          <%= link_to goat_path(goat), style: 'text-decoration: none;' do %>
-            <div class="goat-container">
-              <%= cl_image_tag(goat.photo.key, width: 400, height: 300, crop: :fill, class: 'goat-image') %>
-              <h2 class="goat-name"><%= goat.name %></h2>
-              <div class="goat-rating">
+<div class="main-container">
+  <%# cards %>
+  <div class="goat-listing">
+    <% @goats.each_slice(4) do |goat_batch| %>
+      <div class="row justify-content-center">
+        <% goat_batch.each do |goat| %>
+          <div class="col-md-5">
+            <%= link_to goat_path(goat), style: 'text-decoration: none;' do %>
+              <div class="goat-container">
+                <%= cl_image_tag(goat.photo.key, width: 400, height: 300, crop: :fill, class: 'goat-image') %>
+                <h2 class="goat-name"><%= goat.name %></h2>
+                <div class="goat-rating">
+                </div>
+                <p class="goat-location"><strong>Location:</strong> <%= goat.location %></p>
+                <p class="goat-price">$<%= goat.price %>/Day</p>
               </div>
-              <p class="goat-location"><strong>Location:</strong> <%= goat.location %></p>
-              <p class="goat-price">$<%= goat.price %>/Day</p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%# map %>
+  <div class="container" id="map">
+  <div style="width: 70%; height: 500px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  </div>
 </div>
