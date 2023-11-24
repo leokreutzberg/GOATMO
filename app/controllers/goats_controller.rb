@@ -1,11 +1,11 @@
 class GoatsController < ApplicationController
   def index
     @goats = Goat.all.order(created_at: :desc)
-
     @markers = @goats.geocoded.map do |goat|
       {
         lat: goat.latitude,
-        lng: goat.longitude
+        lng: goat.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {goat: goat})
       }
     end
 
