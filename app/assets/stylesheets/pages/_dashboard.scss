@@ -21,11 +21,44 @@
 }
 
 h1 {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   font-size: 60px;
 }
 
 .delete-booking {
+  position: absolute;
+  top: 5px;
+  right: -8px;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+h3 {
+  margin-top: 35px;
+}
+
+.card-container {
+  display: flex;
+  margin-top: 80px;
+  border: #001d3d 1px solid;
+  border-radius: 20px;
+  padding: 15px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.card-container img {
+  border-radius: 20px;
+  object-fit: cover;
+  height: 300px;
+  width: 300px;
+  margin-right: 20px;
+}
+
+.delete-action {
   position: absolute;
   top: 5px;
   right: -8px;
