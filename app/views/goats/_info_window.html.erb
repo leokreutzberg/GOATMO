@@ -1,12 +1,10 @@
 <style>
   .mapboxgl-popup-content {
-    height: 149px;
-    min-width: 309px;
+    height: 300px;
+    min-width: 150px;
     border-radius: 7px;
-  }
-
-  .map_info_container {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
   }
@@ -18,17 +16,27 @@
     border-radius: 7px;
   }
 
-  .mapboxgl-popup-content .info_popup {
+  .info_popup {
+    text-align: center;
     margin: 10px;
   }
 
-  .info_popup  p {
+  .info_popup p {
     font-size: large;
   }
 
+  .info_popup .view-details-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 </style>
 
-<div class="map_info_container">
+<div class="mapboxgl-popup-content">
 
   <div class="image_in_popup">
     <%= cl_image_tag(goat.photo.key, width: 130, height: 130, crop: :fill) %>
@@ -37,6 +45,8 @@
   <div class="info_popup">
     <h3><%= goat.name %></h3>
     <p><%= goat.price %>€ /day</p>
+    <!-- Button to view details -->
+    <a href="<%= goat_path(goat) %>" class="view-details-btn">View Details</a>
   </div>
 
 </div>
