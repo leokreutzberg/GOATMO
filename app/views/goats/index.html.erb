@@ -121,6 +121,8 @@
     margin-right: ;
 }
 
+
+
 </style>
 
 <h1><strong>Goats</strong></h1>
@@ -149,7 +151,7 @@
 
 <div class="main-container">
   <%# cards %>
-  <div class="goat-listing">
+  <div class="goat-listing col-7">
     <% @goats.each_slice(4) do |goat_batch| %>
       <div class="row justify-content-center">
         <% goat_batch.each do |goat| %>
@@ -171,10 +173,10 @@
   </div>
   <%# map %>
   <div class="container" id="map">
-  <div style="width: 70%; height: 500px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    <div style="width: 70%; height: 500px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
