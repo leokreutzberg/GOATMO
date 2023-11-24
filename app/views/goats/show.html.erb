@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     width: 45%;
-    margin: 0 20px;
+    margin: 0 30px;
   }
   .detail {
     margin-bottom: 10px;
@@ -37,13 +37,13 @@
   .goat-name {
     font-size: 4em;
     color: #333;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     margin-top: 30px;
   }
   .goat-description {
-    font-style: italic;
-    color: #555;
-    margin-left: 20px;
+    font-style: normal;
+    color: #333;
+    /* margin-left: 20px; */
   }
   .goat-price {
     font-weight: bold;
@@ -60,6 +60,10 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   }
 
+  .description-header {
+    color: #333;
+    text-decoration: underline;
+  }
 
 <div style="width: 75%; height: 600px; margin: auto;"
   data-controller="map"
@@ -68,11 +72,6 @@
 
 </div>
 
-  .description-header {
-    color: #333;
-    margin-left: 20px;
-    margin-top: 30px;
-  }
 </style>
 
 <div class="goat-container">
@@ -85,7 +84,7 @@
       <h2 class="goat-name"><%= @goat.name %></h2>
     </div>
     <div class="detail">
-    <h3 class="description-header"><strong>Description:</strong></h3>
+    <h3 class="description-header">Description:</h3>
       <p class="goat-description"><%= @goat.description %></p>
     </div>
   </div>
