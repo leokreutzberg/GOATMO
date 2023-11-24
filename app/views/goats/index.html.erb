@@ -12,7 +12,7 @@
     font-size: 90px;
   }
 
-  p {
+  .title-des p {
     text-align: center;
     color: #001d3d;
     margin: 0 auto;
@@ -115,11 +115,36 @@
 
   #map {
     position: sticky !important;
+    margin-top: 20px;
     top: 0;
     height: 50vh;
     margin-bottom: 200px;
     margin-right: ;
 }
+
+.socialmedia {
+  display: flex;
+  justify-content: space-between;
+  width: 525.891px;
+  margin-top: 30px;
+}
+
+.shareTitle h3 {
+  font-size: 40px;
+  margin-top: 90px;
+  font-weight: bold;
+  color: #001d3d;
+  width: 525.891px;
+  align-items: left;
+}
+
+.shareTitle p {
+  font-size: 16px;
+  color: #001d3d;
+  align-items: left;
+  width: 525.891px;
+}
+
 
 </style>
 
@@ -129,7 +154,7 @@
 
 
 
-<div class="w-50 mx-auto pt-1">
+<div class="title-des w-50 mx-auto pt-1">
 <p>Discover our fleet of professional goats ready to transform your lawn into a pristine paradise. From expert grass munching to eco-friendly fertilizing, our goats are here to make your outdoor space truly extraordinary.</p></p>
 </div>
 
@@ -176,5 +201,45 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
+    <div class="shareTitle">
+      <h3>Share Us On Social Media</h3>
+      <p>Share GoatMo on Social Media and get 30% off your next booking. Refer a friend, and both of you get a discount on your next goat rental! Because nothing says friendship like sharing the joy of goat-tastic adventures.</p>
+    </div>
+
+    <div class="socialmedia">
+      <a
+        class="pintrest-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://www.pinterest.co.uk/">
+        <i class="fa-brands fa-pinterest fa-2xl" style="color: #001d3d";></i>
+      </a>
+        <a
+        class="twitter-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://twitter.com/intent/tweet?text=I">
+        <i class="fa-brands fa-twitter fa-2xl" style="color: #001d3d";></i>
+      </a>
+        <a
+        class="insta-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://www.instagram.com/">
+        <i class="fa-brands fa-instagram fa-2xl" style="color: #001d3d";></i>
+      </a>
+      <a
+        class="fb-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://en-gb.facebook.com/">
+        <i class="fa-brands fa-facebook fa-2xl" style="color: #001d3d;"></i>
+      </a>
+    </div>
   </div>
 </div>
