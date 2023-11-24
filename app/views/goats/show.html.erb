@@ -65,6 +65,13 @@
     text-decoration: underline;
   }
 
+  hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 29, 61, 0), rgba(0, 29, 61, 0.75), rgba(0, 29, 61, 0));
+    margin-bottom: 30px;
+  }
+
 <div style="width: 75%; height: 600px; margin: auto;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -118,3 +125,12 @@
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <hr>
+    <div class="text-center">
+      <p>&copy; 2023 GoatMo. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
