@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_23_145027) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_goats_on_user_id"
   end
 

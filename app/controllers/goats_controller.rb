@@ -1,11 +1,33 @@
 class GoatsController < ApplicationController
-
   def index
     @goats = Goat.all.order(created_at: :desc)
+    @markers = @goats.geocoded.map do |goat|
+      {
+        lat: goat.latitude,
+        lng: goat.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {goat: goat})
+      }
+    end
+
+    if params[:query].present?
+      @goat_search = Goat.search(params[:query])
+      @goats = @goat_search.order(created_at: :desc)
+    else
+      @goats = Goat.all.order(created_at: :desc)
+    end
   end
 
   def show
     @goat = Goat.find(params[:id])
+
+    @markers =
+      [{
+        lat: @goat.latitude,
+        lng: @goat.longitude
+      }]
+
+    @booking = Booking.new
+
   end
 
   def new
@@ -38,4 +60,5 @@ class GoatsController < ApplicationController
   def goat_params
     params.require(:goat).permit(:name, :photo, :price, :description, :location)
   end
+
 end

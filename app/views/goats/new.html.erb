@@ -1,28 +1,30 @@
-<div class="new-goat">
+<div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://wallpapercave.com/wp/wp4713581.jpg);">
+  <div class="new-goat">
 
-<h1>Create a New Goat Listing</h1>
+  <h1>New Goat Listing</h1>
 
 
-    <%= simple_form_for (@goat) do |f| %>
-      <div class="form-inputs">
-              <%= f.input :name,
-                  required: true,
-                  autofocus: true %>
-              <%= f.input :location,
-                  required: true,
-                  autofocus: true %>
-              <%= f.input :price,
-                  required: true,
-                  autofocus: true %>
-              <%= f.input :description,
-                  required: true,
-                  autofocus: true %>
-              <%= f.input :photo, as: :file %>
+      <%= simple_form_for (@goat) do |f| %>
+        <div class="form-inputs">
+                <%= f.input :name,
+                    required: true,
+                    autofocus: true %>
+                <%= f.input :location,
+                    required: true,
+                    autofocus: true %>
+                <%= f.input :price,
+                    required: true,
+                    autofocus: true %>
+                <%= f.input :description,
+                    required: true,
+                    autofocus: true %>
+                <%= f.input :photo, as: :file %>
 
-                  <div class="form-actions">
-      <%= f.button :submit, "Create Listing" %>
-    </div>
+                    <div class="form-actions">
+        <%= f.button :submit, "List" %>
       </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

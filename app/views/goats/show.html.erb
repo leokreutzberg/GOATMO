@@ -1,64 +1,76 @@
-<!-- app/views/goats/show.html.erb -->
 <style>
   body {
-    background-color: #ffff;
+    background-color: #F5F5F5;
   }
   .goat-container {
-    background-color: white;
-    /* border: 1px solid #ddd; */
-    padding: 15px;
     display: flex;
-    align-items: center;
-    padding-right: 280px ;
-    padding-left: 280px ;
-    padding-top: 50px;
-
+    justify-content: space-between;
+    margin: 60px auto;
+    min-height: 400px;
+    width: 90%;
+  }
+  .goat-show-image {
+    width: 25%;
+    /* margin-left: 40px; */
   }
 
-  /* .goat-container h2 p {
-    color: #001d3d
-  } */
-
-  .goat-image {
-    max-width: 40%;
-    border-radius: 5px;
-    margin-right: 20px;
+  .goat-show-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    border: 1px solid rgb(221, 221, 221);
   }
+
   .goat-details {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    /* flex: 1; */
+    /* padding-right: 20px; */
     display: flex;
     flex-direction: column;
+    width: 45%;
+    margin: 0 30px;
   }
   .detail {
     margin-bottom: 10px;
   }
   .goat-name {
-    font-size: 1.5em;
-    color: #001d3d;
+    font-size: 4em;
+    color: #333;
+    /* margin-left: 20px; */
+    margin-top: 30px;
   }
   .goat-description {
-    font-style: italic;
-    color: #001d3d;
+    font-style: normal;
+    color: #333;
+    /* margin-left: 20px; */
   }
   .goat-price {
     font-weight: bold;
-    color: #27AE60;
+    color: #333;
+    font-size: 2em;
   }
-  .book-now-button {
-    background-color:  #001d3d;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    display: inline-block;
+  .booking-form {
+    width: 30%;
+    /* margin-right: 40px; */
+    padding-top: 50px;
+    padding: 40px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   }
 
-  .book-now-button:hover {
-    background-color: #ffc300;
-    transition: 0.5s;
-
+  .description-header {
+    color: #333;
+    text-decoration: underline;
   }
+
+<div style="width: 75%; height: 600px; margin: auto;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" >
+
+</div>
 
   .list-group{
     border-radius: 15px;
@@ -108,19 +120,46 @@
 </style>
 
 <div class="goat-container">
-  <%= cl_image_tag(@goat.photo.key, width: 200, height: 150, crop: :fill, class: 'goat-image') %>
+  <div class="goat-show-image">
+    <%= cl_image_tag(@goat.photo.key, crop: :fill) %>
+  </div>
+
   <div class="goat-details">
     <div class="detail">
       <h2 class="goat-name"><%= @goat.name %></h2>
     </div>
     <div class="detail">
+    <h3 class="description-header">Description:</h3>
       <p class="goat-description"><%= @goat.description %></p>
     </div>
-    <div class="detail">
-      <p class="goat-price">Price per Day: $<%= @goat.price %></p>
-    </div>
-    <div class="detail">
-      <%= link_to 'Book Now', new_goat_booking_path(@goat), class: 'book-now-button' %>
+  </div>
+
+  <div class="booking-form">
+    <%= simple_form_for [@goat, @booking] do |f| %>
+      <p class="goat-price"><%= @goat.price %>€/Day</p>
+      <div data-controller="booking-total-price" data-daily-price=<%= @goat.price %>>
+        <%= f.input :start_date, as: :date, html5: true, input_html: { data: { booking_total_price_target: "startDate", action: "change->booking-total-price#calculate" } } %>
+        <%= f.input :end_date, as: :date, html5: true, input_html: { data: { booking_total_price_target: "endDate", action: "change->booking-total-price#calculate" } } %>
+        <div class="d-flex justify-content-between align-items-center" style="height: 86px;">
+          <div data-booking-total-price-target="endPrice"></div>
+          <%= f.submit "Book Now", class: "btn btn-default", data: {booking_total_price_target: "btn" } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# map %>
+<div class="goat-container">
+  <div class="goat-show-image">Attributs</div>
+
+  <div class="goat-details">Reviews</div>
+
+  <div class="mapShow">
+    <div style="width: 100%; height: 600px; margin: auto;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
 

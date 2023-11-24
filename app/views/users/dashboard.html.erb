@@ -15,10 +15,37 @@
           <% if booking.review.nil? %>
             <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-success" %>
           <% end %>
+
+          <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-booking' do %>
+            <%= image_tag 'remove.png', alt: 'Delete' %>
+          <% end %>
         </div>
       </div>
     <% end %>
   <% else %>
     <p>No bookings yet.</p>
+  <% end %>
+
+
+  <h3>Your Listings:</h3>
+
+  <% if @listings.present? %>
+    <% @listings.each do |listing| %>
+      <div class="card-container">
+        <%= cl_image_tag listing.photo.key %>
+        <div class="listing-card-info">
+          <p>Listing ID: <%= listing.id %></p>
+          <h3>Goat: <%= listing.name %></h3>
+          <p>Location: <%= listing.location %></p>
+          <p>Price: <%= number_to_currency(listing.price) %></p>
+
+          <%= link_to goat_path(listing), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-action' do %>
+            <%= image_tag 'remove.png', alt: 'Delete' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No listings yet.</p>
   <% end %>
 </div>

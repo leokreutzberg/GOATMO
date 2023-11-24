@@ -8,14 +8,15 @@
   h1 {
     text-align: center;
     color: #001d3d;
-    padding-top: 25px;
-    font-size: 75px;
+    padding-top: 50px;
+    font-size: 90px;
   }
 
-  p {
+  .title-des p {
     text-align: center;
     color: #001d3d;
     margin: 0 auto;
+    margin-bottom: 5px;
   }
 
   .goat-listing {
@@ -40,6 +41,11 @@
     padding: 15px;
     text-align: center; */
     margin-bottom: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .goat-container:hover {
+    transform: scale(1.05);
   }
 
   .goat-container p {
@@ -50,50 +56,192 @@
     max-width: 100%;
     border-radius: 15px;
     height: 250px;
+    transition: transform 0.2s ease;
+  }
+
+  .goat-container:hover .goat-image {
+    transform: scale(1.0);
   }
 
   .goat-name {
     font-size: 1.2em;
     margin-top: 10px;
-    color: #333;
+    color: #001d3d;
+    font-weight: bold;
   }
 
   .goat-location {
-    font-style: italic;
-    color: #555;
+    font-style: normal;
+    color: #001d3d;
   }
 
   .goat-price {
-    font-weight: bold;
-    color: #27ae60;
+    font-weight: normal;
+    color: #38b000;
   }
+
+   .goat-price.price {
+    font-weight: normal;
+    color: green;
+  }
+
+  .btn {
+    background-color: #17283b;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .btn:hover {
+   background-color: #ffc300;
+   transition: 0.5s;
+  }
+
+  .form-control {
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 29, 61, 0), rgba(0, 29, 61, 0.75), rgba(0, 29, 61, 0));
+    margin-bottom: 30px;
+  }
+
+.main-container {
+  display: flex;
+  margin-left: 150px;
+}
+
+  #map {
+    position: sticky !important;
+    margin-top: 20px;
+    top: 0;
+    height: 50vh;
+    margin-bottom: 200px;
+    margin-right: ;
+}
+
+
+.socialmedia {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin-top: 30px;
+}
+
+.shareTitle h3 {
+  font-size: 30px;
+  margin-top: 90px;
+  font-weight: bold;
+  color: #001d3d;
+  width: 457.742px;
+  align-items: left;
+}
+
+.shareTitle p {
+  font-size: 16px;
+  color: #001d3d;
+  align-items: left;
+  width: 457.742px;
+}
+
 </style>
 
-<h1>GOATS Available</h1>
+<h1><strong>Goats</strong></h1>
 
-<div class="w-50 mx-auto pt-4">
+<hr>
+
+
+
+<div class="title-des w-50 mx-auto pt-1">
 <p>Discover our fleet of professional goats ready to transform your lawn into a pristine paradise. From expert grass munching to eco-friendly fertilizing, our goats are here to make your outdoor space truly extraordinary.</p></p>
 </div>
-<div class="container">
-<div class="goat-listing">
-  <% @goats.each_slice(4) do |goat_batch| %>
-    <div class="row">
-      <% goat_batch.each do |goat| %>
-        <div class="col-md-3">
-          <%= link_to goat_path(goat), style: 'text-decoration: none;' do %>
-            <div class="goat-container">
-              <%= cl_image_tag(goat.photo.key, width: 400, height: 300, crop: :fill, class: 'goat-image') %>
-              <h2 class="goat-name"><%= goat.name %></h2>
-              <div class="goat-rating">
-              <!-- Display stars based on the review rating -->
-              </div>
-              <p class="goat-location"><strong>Location:</strong> <%= goat.location %></p>
-              <p class="goat-price">Price per Day: $<%= goat.price %></p>
-            </div>
-          <% end %>
-        </div>
+
+<%# search bar %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: goats_path, method: :get, class: "d-flex" do |f| %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Type a keyword"
+            %>
+        <%= submit_tag "Search", name: "", class: "btn btn-default"%>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+
+<div class="main-container">
+  <%# cards %>
+  <div class="goat-listing col-7">
+    <% @goats.each_slice(4) do |goat_batch| %>
+      <div class="row justify-content-center">
+        <% goat_batch.each do |goat| %>
+          <div class="col-md-5">
+            <%= link_to goat_path(goat), style: 'text-decoration: none;' do %>
+              <div class="goat-container">
+                <%= cl_image_tag(goat.photo.key, width: 400, height: 300, crop: :fill, class: 'goat-image') %>
+                <h2 class="goat-name"><%= goat.name %></h2>
+                <div class="goat-rating">
+                </div>
+                <p class="goat-location"><strong>Location:</strong> <%= goat.location %></p>
+                <p class="goat-price">$<%= goat.price %>/Day</p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%# map %>
+  <div class="container" id="map">
+
+  <div style="width: 70%; height: 500px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+    <div class="shareTitle">
+      <h3>Share Us On Social Media</h3>
+      <p>Share GoatMo on Social Media and get 30% off your next booking. Refer a friend, and both of you get a discount on your next goat rental! Because nothing says friendship like sharing the joy of goat-tastic adventures.</p>
+    </div>
+
+    <div class="socialmedia">
+      <a
+        class="pintrest-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://www.pinterest.co.uk/">
+        <i class="fa-brands fa-pinterest fa-2xl" style="color: #001d3d";></i>
+      </a>
+        <a
+        class="twitter-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://twitter.com/intent/tweet?text=I">
+        <i class="fa-brands fa-twitter fa-2xl" style="color: #001d3d";></i>
+      </a>
+        <a
+        class="insta-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://www.instagram.com/">
+        <i class="fa-brands fa-instagram fa-2xl" style="color: #001d3d";></i>
+      </a>
+      <a
+        class="fb-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-size="large"
+        href="https://en-gb.facebook.com/">
+        <i class="fa-brands fa-facebook fa-2xl" style="color: #001d3d;"></i>
+      </a>
+
+    </div>
+  </div>
 </div>
