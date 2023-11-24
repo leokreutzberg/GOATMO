@@ -1,0 +1,42 @@
+<style>
+  .mapboxgl-popup-content {
+    height: 149px;
+    min-width: 309px;
+    border-radius: 7px;
+  }
+
+  .map_info_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .mapboxgl-popup-content img {
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+    border-radius: 7px;
+  }
+
+  .mapboxgl-popup-content .info_popup {
+    margin: 10px;
+  }
+
+  .info_popup  p {
+    font-size: large;
+  }
+
+</style>
+
+<div class="map_info_container">
+
+  <div class="image_in_popup">
+    <%= cl_image_tag(goat.photo.key, width: 130, height: 130, crop: :fill) %>
+  </div>
+
+  <div class="info_popup">
+    <h3><%= goat.name %></h3>
+    <p><%= goat.price %>€ /day</p>
+  </div>
+
+</div>
