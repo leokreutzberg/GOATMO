@@ -15,7 +15,7 @@
           <p><%= booking.goat.description %></p>
 
           <% if booking.review.nil? %>
-            <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-success" %>
+            <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-default" %>
           <% end %>
 
           <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-booking' do %>

@@ -119,26 +119,31 @@
   }
 
 
-  .box {
-    border: 1px solid #ccc;
+  .boxreview {
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 30px;
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   }
 
+
   .review-username {
-    margin-bottom: 10px;
+    /* margin-bottom: 5px; */
+    font-size: 20px;
     text-decoration: underline;
   }
 
   .fa-star {
     color: gold;
-    font-size: 16px;
+    font-size: 10px;
   }
 
 
   .d-flex h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
 
@@ -236,33 +241,39 @@
 
   <div class="goat-show-image">
   <div class="review">
-  <p><strong>Reviews</strong></p>
-  <div class="box">
-    <ul class="list-group">
-      <% @goat.bookings.each do |booking| %>
-        <% if booking.review %>
-          <div class="review-username">
-            <p><strong>
-              <%= booking.review.user.first_name %>
-              <%= booking.review.user.last_name %>
-            </strong></p>
-          </div>
+    <h3>Reviews</h3>
+    <% if @goat.bookings.size == 0 %>
+      <p>No Reviews</p>
+    <% else %>
+      <div class="boxreview">
+        <ul class="list-group">
+          <% @goat.bookings.each do |booking| %>
+            <% if booking.review %>
+              <div class="review-username">
+                <p><strong>
+                  <%= booking.review.user.first_name %>
+                  <%= booking.review.user.last_name %>
+                </strong></p>
+              </div>
 
-          <div class="d-flex">
-            <h2><strong>rating:</strong>
-            <% booking.review.rating.times do %>
-              <span class="fa fa-star" style="font-size: 26px;"></span>
-            <% end %></h2>
-          </div>
+              <div class="d-flex">
+                <p><strong>rating: </strong></p>
+                <% booking.review.rating.times do %>
+                  <span class="fa fa-star" style="font-size: 26px;"></span>
+                <% end %></h2>
+              </div>
 
-          <h2><strong>comment:</strong><%= booking.review.content %></h2>
-        <% end %>
-      <% end %>
-    </ul>
+              <p><strong>comment: </strong><%= booking.review.content %></p>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>
-</div>
 
+
+  <div class="goat-details"> <h3>Attributes</h3></div>
 
   </div>
   <div class="mapShow">

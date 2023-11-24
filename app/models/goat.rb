@@ -8,6 +8,8 @@ class Goat < ApplicationRecord
                   }
 
   has_many :bookings, dependent: :destroy
+  has_many :reviews, through: :bookings
+
   belongs_to :user
 
   has_one_attached :photo
