@@ -12,6 +12,10 @@
           <p>Start Date: <%= booking.start_date %></p>
           <p>End Date: <%= booking.end_date %></p>
 
+          <% if booking.review.nil? %>
+            <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-success" %>
+          <% end %>
+
           <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-booking' do %>
             <%= image_tag 'remove.png', alt: 'Delete' %>
           <% end %>

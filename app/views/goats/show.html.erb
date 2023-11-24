@@ -72,6 +72,51 @@
 
 </div>
 
+  .list-group{
+    border-radius: 15px;
+    padding: 5px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    width:300px;
+    font-size: 5px;
+    font-style: italic;
+    color: #001d3d;
+    font-size: 1.5em;
+  }
+
+
+
+  .review {
+    margin: 20px; /* Adjust margin as needed */
+  }
+
+  .box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+  }
+
+  .review-username {
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+
+  .fa-star {
+    color: gold;
+    font-size: 16px;
+  }
+
+
+  .d-flex h2 {
+    font-size: 16px;
+  }
+
+
+  .box h2 {
+    font-size: 14px;
+  }
+
 </style>
 
 <div class="goat-container">
@@ -116,5 +161,37 @@
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+  </div>
+
+
+
+
+</div>
+
+
+<div class="review">
+  <p><strong>Reviews</strong></p>
+  <div class="box">
+    <ul class="list-group">
+      <% @goat.bookings.each do |booking| %>
+        <% if booking.review %>
+          <div class="review-username">
+            <p><strong>
+              <%= booking.review.user.first_name %>
+              <%= booking.review.user.last_name %>
+            </strong></p>
+          </div>
+
+          <div class="d-flex">
+            <h2><strong>rating:</strong>
+            <% booking.review.rating.times do %>
+              <span class="fa fa-star" style="font-size: 26px;"></span>
+            <% end %></h2>
+          </div>
+
+          <h2><strong>comment:</strong><%= booking.review.content %></h2>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 </div>
