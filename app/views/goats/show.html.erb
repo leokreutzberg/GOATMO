@@ -65,6 +65,40 @@
     text-decoration: underline;
   }
 
+
+  .attribute-bar {
+    width: 500px;
+    margin-top: 30px;
+  }
+
+  .bar-grid {
+    height: 20px;
+    background: #001d3d;
+    border-radius: 30px;
+  }
+
+  .bar-border {
+    border-radius: 30px;
+    margin-left: 10px;
+  }
+  .bar-grid p {
+    margin-top: 15px;
+    margin-left: 10px;
+    color: white;
+  }
+
+
+
+
+
+/* What is this? From Justin */
+  hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 29, 61, 0), rgba(0, 29, 61, 0.75), rgba(0, 29, 61, 0));
+    margin-bottom: 30px;
+  }
+
 <div style="width: 75%; height: 600px; margin: auto;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -72,7 +106,49 @@
 
 </div>
 
+  .list-group{
+    border-radius: 15px;
+    padding: 5px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    width:300px;
+    font-size: 5px;
+    font-style: italic;
+    color: #001d3d;
+    font-size: 1.5em;
+  }
+
+
+  .box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+  }
+
+  .review-username {
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+
+  .fa-star {
+    color: gold;
+    font-size: 16px;
+  }
+
+
+  .d-flex h2 {
+    font-size: 16px;
+  }
+
+
+  .box h2 {
+    font-size: 14px;
+  }
+
+
 </style>
+
 
 <div class="goat-container">
   <div class="goat-show-image">
@@ -106,10 +182,92 @@
 
 <%# map %>
 <div class="goat-container">
-  <div class="goat-show-image">Attributs</div>
 
-  <div class="goat-details">Reviews</div>
+  <div class="goat-show-image">Reviews</div>
 
+  <div class="goat-details">
+    <h4>Attributes</h4>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://t3.ftcdn.net/jpg/01/85/12/30/360_F_185123076_GEELORFo1ctt2D1sRVaULWqnMSPpZkpf.jpg" alt="Hunger" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 300px; border: 1px solid black"><p>Hunger</p></div>
+      </div>
+    </div>
+
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://scalebranding.com/wp-content/uploads/2022/02/SB_Goat-01.jpg" alt="Strength" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 220px; border: 1px solid black"><p>Strength</p></div>
+        </div>
+      </div>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://i.pinimg.com/originals/a0/9c/66/a09c66b9f925c3562dc0acdc243e8909.png" alt="Pace" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 428px; border: 1px solid black"><p>Pace</p></div>
+        </div>
+      </div>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://as2.ftcdn.net/v2/jpg/02/93/85/69/1000_F_293856987_iY4lnNFqqf9O0vuhg9CMK1I9PfTzDD1l.jpg" alt="Endurance" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 370px; border: 1px solid black"><p>Endurance</p></div>
+        </div>
+      </div>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://t4.ftcdn.net/jpg/05/50/88/41/360_F_550884180_hrqadOZM6TTsCGsT3ee5RCRghKld2mFR.jpg" alt="Weight" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 54px; border: 1px solid black"><p>Weight</p></div>
+        </div>
+      </div>
+
+  <div class="goat-show-image">
+  <div class="review">
+  <p><strong>Reviews</strong></p>
+  <div class="box">
+    <ul class="list-group">
+      <% @goat.bookings.each do |booking| %>
+        <% if booking.review %>
+          <div class="review-username">
+            <p><strong>
+              <%= booking.review.user.first_name %>
+              <%= booking.review.user.last_name %>
+            </strong></p>
+          </div>
+
+          <div class="d-flex">
+            <h2><strong>rating:</strong>
+            <% booking.review.rating.times do %>
+              <span class="fa fa-star" style="font-size: 26px;"></span>
+            <% end %></h2>
+          </div>
+
+          <h2><strong>comment:</strong><%= booking.review.content %></h2>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
+
+  <div class="goat-details">Attributs</div>
+
+
+
+  </div>
   <div class="mapShow">
     <div style="width: 100%; height: 600px; margin: auto;"
       data-controller="map"
@@ -117,4 +275,17 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
+
+
+
+
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <hr>
+    <div class="text-center">
+      <p>&copy; 2023 GoatMo. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
