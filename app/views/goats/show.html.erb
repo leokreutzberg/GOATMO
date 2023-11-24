@@ -65,6 +65,32 @@
     text-decoration: underline;
   }
 
+  .attribute-bar {
+    width: 500px;
+    margin-top: 30px;
+  }
+
+  .bar-grid {
+    height: 20px;
+    background: #001d3d;
+    border-radius: 30px;
+  }
+
+  .bar-border {
+    border-radius: 30px;
+    margin-left: 10px;
+  }
+  .bar-grid p {
+    margin-top: 15px;
+    margin-left: 10px;
+    color: white;
+  }
+
+
+
+
+
+/* What is this? From Justin */
 <div style="width: 75%; height: 600px; margin: auto;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -72,7 +98,9 @@
 
 </div>
 
+
 </style>
+
 
 <div class="goat-container">
   <div class="goat-show-image">
@@ -106,10 +134,59 @@
 
 <%# map %>
 <div class="goat-container">
-  <div class="goat-show-image">Attributs</div>
+  <div class="goat-show-image">Reviews</div>
 
-  <div class="goat-details">Reviews</div>
+  <div class="goat-details">
+    <h4>Attributes</h4>
 
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://t3.ftcdn.net/jpg/01/85/12/30/360_F_185123076_GEELORFo1ctt2D1sRVaULWqnMSPpZkpf.jpg" alt="Hunger" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 300px; border: 1px solid black"><p>Hunger</p></div>
+      </div>
+    </div>
+
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://scalebranding.com/wp-content/uploads/2022/02/SB_Goat-01.jpg" alt="Strength" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 220px; border: 1px solid black"><p>Strength</p></div>
+        </div>
+      </div>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://i.pinimg.com/originals/a0/9c/66/a09c66b9f925c3562dc0acdc243e8909.png" alt="Pace" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 428px; border: 1px solid black"><p>Pace</p></div>
+        </div>
+      </div>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://as2.ftcdn.net/v2/jpg/02/93/85/69/1000_F_293856987_iY4lnNFqqf9O0vuhg9CMK1I9PfTzDD1l.jpg" alt="Endurance" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 370px; border: 1px solid black"><p>Endurance</p></div>
+        </div>
+      </div>
+
+    <div class="attribute-bar d-flex align-items-center">
+      <div class="attribute-icon">
+        <img src="https://t4.ftcdn.net/jpg/05/50/88/41/360_F_550884180_hrqadOZM6TTsCGsT3ee5RCRghKld2mFR.jpg" alt="Weight" style="border-radius: 50%; height: 50px; width: 50px; float: left;">
+      </div>
+      <div class="bar-border" style="width: 500px; border: 1px solid black">
+        <div class="bar-grid d-flex align-items-center" style="width: 54px; border: 1px solid black"><p>Weight</p></div>
+        </div>
+      </div>
+
+
+  </div>
   <div class="mapShow">
     <div style="width: 100%; height: 600px; margin: auto;"
       data-controller="map"
