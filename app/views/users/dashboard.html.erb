@@ -8,9 +8,11 @@
         <%= cl_image_tag booking.goat.photo.key %>
         <div class="booking-card-info">
           <p>Booking ID: <%= booking.id %></p>
-          <h3>Goat: <%= booking.goat.name %></h3>
-          <p>Start Date: <%= booking.start_date %></p>
-          <p>End Date: <%= booking.end_date %></p>
+          <h3><%= booking.goat.name %></h3>
+          <p>Booking Date: <%= booking.start_date %> - <%= booking.end_date %></p>
+          <p><strong>Total Days: </strong><%= booking.calculate_total_days %> </p>
+          <p><strong>Total Price: </strong><%= booking.calculate_total_price %>$</p>
+          <p><%= booking.goat.description %></p>
 
           <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-booking' do %>
             <%= image_tag 'remove.png', alt: 'Delete' %>
@@ -31,9 +33,10 @@
         <%= cl_image_tag listing.photo.key %>
         <div class="listing-card-info">
           <p>Listing ID: <%= listing.id %></p>
-          <h3>Goat: <%= listing.name %></h3>
-          <p>Location: <%= listing.location %></p>
-          <p>Price: <%= number_to_currency(listing.price) %></p>
+          <h3><%= listing.name %></h3>
+          <p><strong>Location: </strong><%= listing.location %></p>
+          <p><strong>Price/day: </strong><%= number_to_currency(listing.price) %>$</p>
+          <p><%= listing.description %></p>
 
           <%= link_to goat_path(listing), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-action' do %>
             <%= image_tag 'remove.png', alt: 'Delete' %>
