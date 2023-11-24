@@ -36,7 +36,13 @@ image_index = 0
   puts 'User created'
 
    3.times do
-    goat = Goat.new(name: Faker::FunnyName.two_word_name, location: LOCATIONS.sample, price: rand(20..500), description: Faker::Quotes::Shakespeare.as_you_like_it_quote)
+    goat = Goat.new(name: Faker::FunnyName.two_word_name, location: LOCATIONS.sample, price: rand(20..500))
+
+    goat.description = "Meet #{goat.name}, your lawn's new celebrity landscaper! 🌿🐐
+
+    Tired of the same old lawn care routine? Say hello to #{goat.name}, the eco-friendly and stylish alternative to traditional mowers. Let him gracefully graze through your lawn, turning your outdoor space into a star-studded paradise.
+
+    Upgrade your lawn care game with #{goat.name}, where sustainability meets celebrity charm. Purchase your own lawn-munching companion today and redefine the way you maintain your outdoor haven!"
     goat.user = user
 
     file = URI.open(GOAT_IMAGES[image_index])
@@ -45,5 +51,5 @@ image_index = 0
 
     goat.save!
     puts 'Goat created'
-  end
+   end
 end
