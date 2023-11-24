@@ -24,7 +24,7 @@ GOAT_IMAGES = ['https://images.newscientist.com/wp-content/uploads/2019/07/09172
                'https://godstonefarm.co.uk/wp-content/uploads/2022/02/261919860_633742021225685_5213532098424325316_n-910x1024.jpg',
                'https://www.thehappychickencoop.com/wp-content/uploads/2023/06/weird-goat-breeds-featured-image.jpg',
                'https://t4.ftcdn.net/jpg/02/88/74/77/360_F_288747705_lF8oCsASeLu8Hi8cSm4l9FqUWFvrTmy4.jpg',
-               'https://www.shutterstock.com/image-photo/funny-cute-goat-260nw-1372240856.jpg',
+               'https://images3.alphacoders.com/650/650145.jpg',
                'https://images.pexels.com/photos/18314117/pexels-photo-18314117.jpeg?cs=srgb&dl=pexels-laurent-julien-18314117.jpg&fm=jpg',
                'https://barfblog.com/wp-content/uploads/2010/07/billy_goat_saturnine_94112_l.jpg']
 
