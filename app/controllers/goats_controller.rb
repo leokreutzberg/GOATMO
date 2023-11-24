@@ -5,7 +5,8 @@ class GoatsController < ApplicationController
       {
         lat: goat.latitude,
         lng: goat.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {goat: goat})
+        info_window_html: render_to_string(partial: "info_window", locals: {goat: goat}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
 
@@ -23,7 +24,8 @@ class GoatsController < ApplicationController
     @markers =
       [{
         lat: @goat.latitude,
-        lng: @goat.longitude
+        lng: @goat.longitude,
+        marker_html: render_to_string(partial: "marker")
       }]
 
     @booking = Booking.new
