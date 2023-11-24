@@ -188,7 +188,37 @@
 <%# map %>
 <div class="goat-container">
 
-  <div class="goat-show-image">Reviews</div>
+  <div class="goat-show-image">
+    <div class="review">
+    <h4>Reviews</h4>
+    <% if @goat.bookings.size == 0 %>
+      <p>No Reviews</p>
+    <% else %>
+      <div class="boxreview">
+        <ul class="list-group">
+          <% @goat.bookings.each do |booking| %>
+            <% if booking.review %>
+              <div class="review-username">
+                <p><strong>
+                  <%= booking.review.user.first_name %>
+                  <%= booking.review.user.last_name %>
+                </strong></p>
+              </div>
+
+              <div class="d-flex">
+                <p><strong>rating: </strong></p>
+                <% booking.review.rating.times do %>
+                  <span class="fa fa-star" style="font-size: 26px;"></span>
+                <% end %></h2>
+              </div>
+
+              <p><strong>comment: </strong><%= booking.review.content %></p>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div></div>
 
   <div class="goat-details">
     <h4>Attributes</h4>
@@ -238,42 +268,6 @@
         <div class="bar-grid d-flex align-items-center" style="width: 80px; border: 1px solid black"><p>Weight</p></div>
         </div>
       </div>
-
-  <div class="goat-show-image">
-  <div class="review">
-    <h3>Reviews</h3>
-    <% if @goat.bookings.size == 0 %>
-      <p>No Reviews</p>
-    <% else %>
-      <div class="boxreview">
-        <ul class="list-group">
-          <% @goat.bookings.each do |booking| %>
-            <% if booking.review %>
-              <div class="review-username">
-                <p><strong>
-                  <%= booking.review.user.first_name %>
-                  <%= booking.review.user.last_name %>
-                </strong></p>
-              </div>
-
-              <div class="d-flex">
-                <p><strong>rating: </strong></p>
-                <% booking.review.rating.times do %>
-                  <span class="fa fa-star" style="font-size: 26px;"></span>
-                <% end %></h2>
-              </div>
-
-              <p><strong>comment: </strong><%= booking.review.content %></p>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-  <div class="goat-details"> <h3>Attributes</h3></div>
 
   </div>
   <div class="mapShow">
